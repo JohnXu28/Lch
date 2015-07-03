@@ -506,7 +506,7 @@ UVT uvt[31] = {
 };
 
 
-int XYZtoColorTemp(double *xyz, double *temp)
+int XYZtoCorColorTemp(double *xyz, double *temp)
 {
 	double us, vs, p, di, dm;
 	int i;
