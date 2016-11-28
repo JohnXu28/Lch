@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "clch.h"
-#include "math.h"
 #include <memory>
 /*	 
 * sRGB color space conversion for example.
@@ -357,7 +356,7 @@ void CLCH::PutData_XYZ(double InX, double InY, double InZ)
 	XYZ2RGB();
 }
 
-const CLCH& CLCH::operator=(const CLCH& temp)
+CLCH& CLCH::operator=(const CLCH& temp)
 {
 	PutData_Lch(temp.L, temp.c, temp.h);
 	return *this;
@@ -450,7 +449,6 @@ unsigned char Density2RGB255(double data)
 *              Gunter Wyszecki and W. S. Stiles, John Wiley & Sons, 1982, pp. 227, 228.
 */
 #include "stdafx.h"
-#include <float.h>
 #include <math.h>
 
 /* LERP(a,b,c) = linear interpolation macro, is 'a' when c == 0.0 and 'b' when c == 1.0 */

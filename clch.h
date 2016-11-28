@@ -155,7 +155,7 @@ namespace ColorLch{
 		void	PutData_Lab(double L, double a, double b);		
 		void	PutData_RGB(double R, double G, double B);
 		void	PutData_XYZ(double X, double Y, double Z);
-		const	CLCH&	operator=(const CLCH& temp);
+		CLCH&	operator=(const CLCH& temp);
 	public:
 		// The Light of RGB2XYZ and XYZ2RGB is all D50.
 		// Default is sRGB color space.
