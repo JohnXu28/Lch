@@ -449,7 +449,6 @@ unsigned char Density2RGB255(double data)
 *              Gunter Wyszecki and W. S. Stiles, John Wiley & Sons, 1982, pp. 227, 228.
 */
 #include "stdafx.h"
-#include <math.h>
 
 /* LERP(a,b,c) = linear interpolation macro, is 'a' when c == 0.0 and 'b' when c == 1.0 */
 #define LERP(a,b,c)     (((b) - (a)) * (c) + (a))
