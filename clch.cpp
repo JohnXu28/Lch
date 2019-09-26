@@ -1,6 +1,10 @@
 #include "stdafx.h"
+
 #include "clch.h"
 #include <memory>
+#include <cstring>
+#include <cmath>
+#include <float.h>
 /*	 
 * sRGB color space conversion for example.
 *				(Bradford Conversion)	       (D65 RGB2XYZ)
