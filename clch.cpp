@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cmath>
 #include <float.h>
-/*	 
+/*
 * sRGB color space conversion for example.
 *				(Bradford Conversion)	       (D65 RGB2XYZ)
 * |X|		  | 1.0479	0.0229	-0.0502|   |0.4124	0.3576	0.1805|	  |R|
@@ -21,17 +21,17 @@
 * Using Matlab function "ColorSpace" to find out the RGB2XYZ Matrix, For example,
 * >> sRGB=[0.3127 0.3290;0.64 0.33;0.3 0.6;0.15 0.06];
 * >> RGB2XYZ = ColorSpace(sRGB);
-* >> RGB2XYZ = 
+* >> RGB2XYZ =
 * 0.4361    0.3852    0.1431
 * 0.2225    0.7169    0.0606
 * 0.0139    0.0971    0.7141
 *******************************************************************************************************
 Other Color space
 *******************************************************************************************************
-RGB Working Space  	Reference White  	  	
-Adobe RGB (1998) 	D50 			
+RGB Working Space  	Reference White
+Adobe RGB (1998) 	D50
 	RGB to XYZ [M]
-	 0.6097559  0.2052401  0.1492240 
+	 0.6097559  0.2052401  0.1492240
 	 0.3111242  0.6256560  0.0632197
 	 0.0194811  0.0608902  0.7448387
 
@@ -76,7 +76,7 @@ NTSC RGB 	D50
 	-0.9826630  2.0044755 -0.0690396
 	 0.0736477 -0.1453020  1.3018376
 
-PAL/SECAM RGB 	D50                                             
+PAL/SECAM RGB 	D50
 	 0.4552773  0.3675500  0.1413926
 	 0.2323025  0.7077956  0.0599019
 	 0.0145457  0.1049154  0.7057489
@@ -108,52 +108,52 @@ sRGB 	D50
 double sRGB_D50[3][3] = {
 	{0.4361, 0.3851, 0.1431},
 	{0.2225, 0.7169, 0.0606},
-	{0.0139, 0.0971, 0.7141}};
+	{0.0139, 0.0971, 0.7141} };
 
-	//XYZ2RGB(sRGB)
-	double inv_sRGB_D50[3][3]={
-		{3.1341,   -1.6174,   -0.4907},
-		{-0.9788,    1.9163,    0.0334},
-		{0.0720,   -0.2290,    1.4054}};
+//XYZ2RGB(sRGB)
+double inv_sRGB_D50[3][3] = {
+	{3.1341,   -1.6174,   -0.4907},
+	{-0.9788,    1.9163,    0.0334},
+	{0.0720,   -0.2290,    1.4054} };
 
-		//RGB2XYZ(AdobeRGB)
-		double AdobeRGB_D50[3][3] = {
-			{0.6098,    0.2053,    0.1492},
-			{0.3111,    0.6257,    0.0632},
-			{0.0195,    0.0609,    0.7448}};
+//RGB2XYZ(AdobeRGB)
+double AdobeRGB_D50[3][3] = {
+	{0.6098,    0.2053,    0.1492},
+	{0.3111,    0.6257,    0.0632},
+	{0.0195,    0.0609,    0.7448} };
 
-			//XYZ2RGB(AdobeRGB)
-			double inv_AdobeRGB_D50[3][3]={
-				{1.9625,   -0.6107,   -0.3414},
-				{-0.9788,    1.9163,    0.0334},
-				{0.0287,   -0.1407,    1.3489}};
+//XYZ2RGB(AdobeRGB)
+double inv_AdobeRGB_D50[3][3] = {
+	{1.9625,   -0.6107,   -0.3414},
+	{-0.9788,    1.9163,    0.0334},
+	{0.0287,   -0.1407,    1.3489} };
 
-				//RGB2XYZ(AppleRGB)
-				double AppleRGB_D50[3][3] = {
-					{0.4756,    0.3397,    0.1490},
-					{0.2552,    0.6726,    0.0723},
-					{0.0185,    0.1133,    0.6933}};
+//RGB2XYZ(AppleRGB)
+double AppleRGB_D50[3][3] = {
+	{0.4756,    0.3397,    0.1490},
+	{0.2552,    0.6726,    0.0723},
+	{0.0185,    0.1133,    0.6933} };
 
-					//XYZ2RGB(AppleRGB)
-					double inv_AppleRGB_D50[3][3]={
-						{ 2.8513,   -1.3610,   -0.4709},
-						{-1.0928,    2.0350,    0.0227},
-						{0.1027,   -0.2965,    1.4512}};
+//XYZ2RGB(AppleRGB)
+double inv_AppleRGB_D50[3][3] = {
+	{ 2.8513,   -1.3610,   -0.4709},
+	{-1.0928,    2.0350,    0.0227},
+	{0.1027,   -0.2965,    1.4512} };
 
-						//RGB2XYZ(ColorMatchRGB)
-						double ColorMatchRGB_D50[3][3] = {
-							{0.5095,    0.3209,    0.1339},
-							{0.2750,    0.6581,    0.0670},
-							{0.0243,    0.1088,    0.6921}};
+//RGB2XYZ(ColorMatchRGB)
+double ColorMatchRGB_D50[3][3] = {
+	{0.5095,    0.3209,    0.1339},
+	{0.2750,    0.6581,    0.0670},
+	{0.0243,    0.1088,    0.6921} };
 
-							//XYZ2RGB(ColorMatchRGB)
-							double inv_ColorMatchRGB_D50[3][3]={
-								{2.6416,   -1.2231,   -0.3929},
-								{-1.1121,    2.0592,    0.0160},
-								{0.0822,   -0.2808,    1.4562}};			
+//XYZ2RGB(ColorMatchRGB)
+double inv_ColorMatchRGB_D50[3][3] = {
+	{2.6416,   -1.2231,   -0.3929},
+	{-1.1121,    2.0592,    0.0160},
+	{0.0822,   -0.2808,    1.4562} };
 /*
 * CLCH color conversion class
-*/									   
+*/
 CLCH::CLCH(double WhiteX, double WhiteY, double WhiteZ)
 {
 	//SetColorSpace(CS_AdobeRGB);
@@ -162,9 +162,9 @@ CLCH::CLCH(double WhiteX, double WhiteY, double WhiteZ)
 	a = 0.0;	b = 0.0;
 	R = 0;	G = 0;	B = 0;
 	X = 0;	Y = 0;	Z = 0;
-	Xn = WhiteX/65535.0;
-	Yn = WhiteY/65535.0;
-	Zn = WhiteZ/65535.0;	
+	Xn = WhiteX / 65535.0;
+	Yn = WhiteY / 65535.0;
+	Zn = WhiteZ / 65535.0;
 }
 
 CLCH::~CLCH()
@@ -174,7 +174,7 @@ CLCH::~CLCH()
 
 void CLCH::SetColorSpace(ColorSpace sig)
 {
-	switch(sig)
+	switch (sig)
 	{
 	case CS_AdobeRGB:
 		memcpy(m_RGB2XYZ, AdobeRGB_D50, sizeof(double) * 9);
@@ -202,9 +202,9 @@ void CLCH::SetColorSpace(ColorSpace sig)
 
 void CLCH::SetWhite(double WhiteX, double WhiteY, double WhiteZ)
 {
-	Xn = WhiteX/65535.0;
-	Yn = WhiteY/65535.0;
-	Zn = WhiteZ/65535.0;
+	Xn = WhiteX / 65535.0;
+	Yn = WhiteY / 65535.0;
+	Zn = WhiteZ / 65535.0;
 }
 
 /***********************************************
@@ -221,7 +221,7 @@ void CLCH::LCH2LAB()
 void CLCH::LAB2XYZ()
 {
 	double fX, fY, fZ;
-	if(L > 7.9996)
+	if (L > 7.9996)
 	{
 		fY = (L + 16) / 116;
 		Y = pow(fY, 3);
@@ -251,17 +251,17 @@ void CLCH::LAB2XYZ()
 
 void CLCH::XYZ2RGB()
 {
-	R =	(X *  m_XYZ2RGB[0][0] + Y * m_XYZ2RGB[0][1] + Z * m_XYZ2RGB[0][2]) * 255;
+	R = (X *  m_XYZ2RGB[0][0] + Y * m_XYZ2RGB[0][1] + Z * m_XYZ2RGB[0][2]) * 255;
 	G = (X *  m_XYZ2RGB[1][0] + Y * m_XYZ2RGB[1][1] + Z * m_XYZ2RGB[1][2]) * 255;
-	B =	(X *  m_XYZ2RGB[2][0] + Y * m_XYZ2RGB[2][1] + Z * m_XYZ2RGB[2][2]) * 255;
-	
-	if(R > 255)		R = 255;
-	if(G > 255)		G = 255;
-	if(B > 255)		B = 255;
+	B = (X *  m_XYZ2RGB[2][0] + Y * m_XYZ2RGB[2][1] + Z * m_XYZ2RGB[2][2]) * 255;
 
-	if(R < 0)		R = 0;
-	if(G < 0)		G = 0;
-	if(B < 0)		B = 0;
+	if (R > 255)		R = 255;
+	if (G > 255)		G = 255;
+	if (B > 255)		B = 255;
+
+	if (R < 0)		R = 0;
+	if (G < 0)		G = 0;
+	if (B < 0)		B = 0;
 }
 
 /***********************************************
@@ -277,8 +277,8 @@ void CLCH::RGB2XYZ()
 void CLCH::XYZ2LAB()
 {
 	double tempX, tempY, tempZ, fX, fY, fZ;
-	tempX = X / Xn; 
-	tempY = Y / Yn; 
+	tempX = X / Xn;
+	tempY = Y / Yn;
 	tempZ = Z / Zn;
 
 	if (tempY > 0.008856)
@@ -286,19 +286,19 @@ void CLCH::XYZ2LAB()
 	else
 		L = 903.3 * tempY;
 
-	if(tempX > 0.008856)
+	if (tempX > 0.008856)
 		fX = pow(tempX, 0.3333333);
-	else 
+	else
 		fX = 7.787 * tempX + 0.137931; //0.137931 = 16 / 116;
 
-	if(Y> 0.008856)
+	if (Y > 0.008856)
 		fY = pow(tempY, 0.3333333);
-	else 
+	else
 		fY = 7.787 * tempY + 0.137931; //0.137931 = 16 / 116;
 
-	if(Z > 0.008856)
+	if (Z > 0.008856)
 		fZ = pow(tempZ, 0.3333333);
-	else 
+	else
 		fZ = 7.787 * tempZ + 0.137931; //0.137931 = 16 / 116;
 
 	a = 500 * (fX - fY);
@@ -320,7 +320,7 @@ void CLCH::PutData_Lch(double light, double chroma, double hue)
 	c = chroma;
 	h = hue;
 	if (light >= 100)		light = 100;
-	if ( chroma <= 0)		chroma = 0;
+	if (chroma <= 0)		chroma = 0;
 
 	LCH2LAB();
 	LAB2XYZ();
@@ -341,12 +341,12 @@ void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
 void CLCH::PutData_RGB(double Red, double Green, double Blue)
 {
 	R = Red;	G = Green;	B = Blue;
-	if(R < 0)		R = 0;
-	if(R > 255)		R = 255;
-	if(G < 0)		G = 0;
-	if(G > 255)		G = 255; 
-	if(B < 0)		B = 0;
-	if(B > 255)		B = 255;
+	if (R < 0)		R = 0;
+	if (R > 255)		R = 255;
+	if (G < 0)		G = 0;
+	if (G > 255)		G = 255;
+	if (B < 0)		B = 0;
+	if (B > 255)		B = 255;
 	RGB2XYZ();
 	XYZ2LAB();
 	LAB2LCH();
@@ -369,16 +369,16 @@ CLCH& CLCH::operator=(const CLCH& temp)
 void CLCH::Adjust(double Adjust_L, double Adjust_c, double Adjust_h)
 {
 	L = L + Adjust_L;
-	if(L > 100) L = 100;
-	if(L < 0) L = 0;
+	if (L > 100) L = 100;
+	if (L < 0) L = 0;
 
 	c = c + Adjust_c;
-	if(c > 100) c = 100;
-	if(c < 0) c = 0;
+	if (c > 100) c = 100;
+	if (c < 0) c = 0;
 
 	h = h + Adjust_h;
-	if(h > 360) h -= 360;
-	if(h < 0) h += 360;
+	if (h > 360) h -= 360;
+	if (h < 0) h += 360;
 
 	LCH2LAB();
 	LAB2XYZ();
@@ -388,17 +388,17 @@ void CLCH::Adjust(double Adjust_L, double Adjust_c, double Adjust_h)
 //Other Useful function.
 //Range 0 ~ 1
 double sRGB_Gamma_Decode(double data)
-{	
-	if(data <= 0.03928)
+{
+	if (data <= 0.03928)
 		return (data / 12.92);
 	else
-		return pow((data+0.055)/1.055, 2.4);
+		return pow((data + 0.055) / 1.055, 2.4);
 }
 
 //Range 0 ~ 1
 double sRGB_Gamma_Encode(double data)
 {
-	if(data < 0.00304)
+	if (data < 0.00304)
 		return (data * 12.92);
 	else
 		return (1.055 * pow(data, 0.4167) - 0.055);
@@ -417,16 +417,24 @@ unsigned char sRGB_Gamma_Encode255(unsigned char data)
 }
 
 double RGB2Density(double data)
-{	return -log10(data);}
+{
+	return -log10(data);
+}
 
 double Density2RGB(double data)
-{	return pow(10, -data);}
+{
+	return pow(10, -data);
+}
 
 double RGB2Density255(unsigned char data)
-{	return -log10(data/255.0);}
+{
+	return -log10(data / 255.0);
+}
 
 unsigned char Density2RGB255(double data)
-{	return (unsigned char )(255 * pow(10, -data) + 0.5);}
+{
+	return (unsigned char)(255 * pow(10, -data) + 0.5);
+}
 
 /*
 *      Name:   XYZtoCorColorTemp.c

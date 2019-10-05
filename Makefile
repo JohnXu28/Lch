@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-CPPS = 	cLch.cpp 
+CPPS = 	clch.cpp 
 		
 CPPFLAGS += -fPIC 
 
