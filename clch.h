@@ -101,13 +101,13 @@ Matrix = BFD_Transformation * RGB2XYZ;
 */
 namespace ColorLch{
 	//Color Space, Used for change output color space.
-	enum ColorSpace
+	enum class ColorSpace
 	{	
-		CS_sRGB,
-		CS_AdobeRGB,
-		CS_AppleRGB,
-		CS_ColorMatchRGB,
-		CS_UnKnown = 0xFFFF
+		eCS_sRGB,
+		eCS_AdobeRGB,
+		eCS_AppleRGB,
+		eCS_ColorMatchRGB,
+		eCS_UnKnown = 0xFFFF
 	};
 
 	/**
@@ -177,5 +177,11 @@ unsigned char Density2RGB255(double data);
 //Other color tools
 int XYZtoCorColorTemp(double *xyz, double *temp);
 void RGB2HSB(const int R, const int G, const int B, int& h, int& s, int& b);
+
+#define CS_sRGB					ColorSpace::eCS_sRGB
+#define CS_AdobeRGB				ColorSpace::eCS_AdobeRGB
+#define CS_AppleRGB				ColorSpace::eCS_AppleRGB
+#define CS_ColorMatchRGB		ColorSpace::eCS_ColorMatchRGB
+#define CS_UnKnown				ColorSpace::eCS_UnKnown
 
 #endif //__CLCH_H__
