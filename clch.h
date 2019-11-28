@@ -184,4 +184,50 @@ void RGB2HSB(const int R, const int G, const int B, int& h, int& s, int& b);
 #define CS_ColorMatchRGB		ColorSpace::eCS_ColorMatchRGB
 #define CS_UnKnown				ColorSpace::eCS_UnKnown
 
+inline unsigned short Tiff_encode_L(double data)
+{//range 0 ~ 100
+	int intPart, rationPart;
+
+	if (data < 0)
+		return 0x0;
+	else
+	{
+		intPart = (int)data;
+		rationPart = (int)((data - intPart) * 256 + 0.5);
+		return (0xFF00 & (int)(intPart * 255 / 100 + 0.5) << 8) | (0xFF & rationPart);
+	}
+}
+
+inline unsigned short Tiff_encode_ab(double data)
+{
+	return (short)(data * 256);
+}
+
+inline double Tiff_decode_L(unsigned short data)
+{
+	return (double)data * 100 / 65535.0;
+}
+
+//bug???
+inline double Tiff_decode_ab(unsigned short data)
+{
+	if (data < 0x8000)
+		return (short)data / 256.0;
+	else
+		return (data - 0xFFFF) / 256.0;
+}
+
+inline double Tiff_decode_L_8(unsigned char data)
+{
+	return (double)data * 100 / 255.0;
+}
+
+inline double Tiff_decode_ab_8(unsigned char data)
+{
+	if (data < 128)
+		return (double)data;
+	else
+		return data - 255;
+}
+
 #endif //__CLCH_H__
