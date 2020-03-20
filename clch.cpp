@@ -319,12 +319,14 @@ void CLCH::PutData_Lch(double light, double chroma, double hue)
 	L = light;
 	c = chroma;
 	h = hue;
-	if (light >= 100)		light = 100;
-	if (chroma <= 0)		chroma = 0;
+	if (light >= 100)		
+		L = 100;
+	if (chroma <= 0)		
+		c = 0;
 
 	LCH2LAB();
 	LAB2XYZ();
-	XYZ2LAB();
+	XYZ2RGB();
 }
 
 void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
@@ -332,7 +334,8 @@ void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
 	L = light;
 	a = Data_a;
 	b = Data_b;
-	if (light >= 100)		light = 100;;
+	if (light >= 100)
+		L = 100;;
 	LAB2LCH();
 	LAB2XYZ();
 	XYZ2RGB();
@@ -340,13 +343,15 @@ void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
 
 void CLCH::PutData_RGB(double Red, double Green, double Blue)
 {
-	R = Red;	G = Green;	B = Blue;
+	R = Red;	
+	G = Green;	
+	B = Blue;
 	if (R < 0)		R = 0;
-	if (R > 255)		R = 255;
+	if (R > 255)	R = 255;
 	if (G < 0)		G = 0;
-	if (G > 255)		G = 255;
+	if (G > 255)	G = 255;
 	if (B < 0)		B = 0;
-	if (B > 255)		B = 255;
+	if (B > 255)	B = 255;
 	RGB2XYZ();
 	XYZ2LAB();
 	LAB2LCH();
@@ -354,7 +359,9 @@ void CLCH::PutData_RGB(double Red, double Green, double Blue)
 
 void CLCH::PutData_XYZ(double InX, double InY, double InZ)
 {
-	X = InX; Y = InY; Z = InZ;
+	X = InX; 
+	Y = InY; 
+	Z = InZ;
 	XYZ2LAB();
 	LAB2LCH();
 	XYZ2RGB();
