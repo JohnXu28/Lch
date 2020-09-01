@@ -244,6 +244,9 @@ void CLCH::LAB2XYZ()
 	else
 		Z = (fZ - 0.137931) / 7.787;
 
+	if (Z < 0)
+		Z = 0;
+
 	X = X * Xn;
 	Y = Y * Yn;
 	Z = Z * Zn;
