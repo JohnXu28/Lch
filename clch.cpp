@@ -337,8 +337,6 @@ void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
 	L = light;
 	a = Data_a;
 	b = Data_b;
-	if (light >= 100)
-		L = 100;;
 	LAB2LCH();
 	LAB2XYZ();
 	XYZ2RGB();
