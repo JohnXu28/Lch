@@ -317,7 +317,7 @@ void CLCH::LAB2LCH()
 		h += 360;
 }
 
-void CLCH::PutData_Lch(double light, double chroma, double hue)
+void CLCH::Set_Lch(double light, double chroma, double hue)
 {
 	L = light;
 	c = chroma;
@@ -332,7 +332,7 @@ void CLCH::PutData_Lch(double light, double chroma, double hue)
 	XYZ2RGB();
 }
 
-void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
+void CLCH::Set_Lab(double light, double Data_a, double Data_b)
 {
 	L = light;
 	a = Data_a;
@@ -342,7 +342,7 @@ void CLCH::PutData_Lab(double light, double Data_a, double Data_b)
 	XYZ2RGB();
 }
 
-void CLCH::PutData_RGB(double Red, double Green, double Blue)
+void CLCH::Set_RGB(double Red, double Green, double Blue)
 {
 	R = Red;	
 	G = Green;	
@@ -358,7 +358,7 @@ void CLCH::PutData_RGB(double Red, double Green, double Blue)
 	LAB2LCH();
 }
 
-void CLCH::PutData_XYZ(double InX, double InY, double InZ)
+void CLCH::Set_XYZ(double InX, double InY, double InZ)
 {
 	X = InX; 
 	Y = InY; 
@@ -370,7 +370,7 @@ void CLCH::PutData_XYZ(double InX, double InY, double InZ)
 
 CLCH& CLCH::operator=(const CLCH& temp)
 {
-	PutData_Lch(temp.L, temp.c, temp.h);
+	Set_Lch(temp.L, temp.c, temp.h);
 	return *this;
 }
 
