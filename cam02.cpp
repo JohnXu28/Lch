@@ -363,9 +363,9 @@ void CAM02::Forward(const XYZ pIn, JCh& pOut)
 {
 	CAM02COLOR clr;
 
-	clr.XYZ[0] = pIn[0] * 100;//->X;
-	clr.XYZ[1] = pIn[1] * 100;//->Y;
-	clr.XYZ[2] = pIn[2] * 100;//->Z;
+	clr.XYZ[0] = pIn[0];//->X;
+	clr.XYZ[1] = pIn[1];//->Y;
+	clr.XYZ[2] = pIn[2];//->Z;
 
 	clr.XYZtoCAT02();
 	clr.ChromaticAdaptation(this);
