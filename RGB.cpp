@@ -222,8 +222,8 @@ void Conversion()
 		else
 			cout << "Select Input : " << option[Select] << endl;
 
-		Option option = (Option)Select;
-		switch (option)
+		//Option option = (Option)Select;
+		switch (Select)
 		{
 		case sRGB:
 			cout << "Input sRGB(Gamma 2.2). Quit: 0 0 0 or CTrl+C\n" << endl;
