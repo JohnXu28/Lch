@@ -107,6 +107,7 @@ namespace ColorLch{
 		eCS_AdobeRGB,
 		eCS_AppleRGB,
 		eCS_ColorMatchRGB,
+		eCS_DisplayP3,
 		eCS_UnKnown = 0xFFFF
 	};
 
@@ -174,6 +175,9 @@ double Density2RGB(double data);
 double RGB2Density255(unsigned char data);
 unsigned char Density2RGB255(double data);
 
+double DisplayP3_Gamma_Encode(double data);
+unsigned char DisplayP3_Gamma_Encode255(unsigned char data);
+
 //Other color tools
 int XYZtoCorColorTemp(double *xyz, double *temp);
 void RGB2HSB(const int R, const int G, const int B, int& h, int& s, int& b);
@@ -182,6 +186,7 @@ void RGB2HSB(const int R, const int G, const int B, int& h, int& s, int& b);
 #define CS_AdobeRGB				ColorSpace::eCS_AdobeRGB
 #define CS_AppleRGB				ColorSpace::eCS_AppleRGB
 #define CS_ColorMatchRGB		ColorSpace::eCS_ColorMatchRGB
+#define CS_ColorDisplayP3		ColorSpace::eCS_DisplayP3
 #define CS_UnKnown				ColorSpace::eCS_UnKnown
 
 inline unsigned short Tiff_encode_L(double data)
