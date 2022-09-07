@@ -461,7 +461,7 @@ double DisplayP3_Gamma_Decode(double data)
 unsigned char DisplayP3_Gamma_Decode255(unsigned char data)
 {
 	double In = data / 255.0;
-	return (unsigned char)(255 * DisplayP3_Gamma_Encode(In) + 0.5);
+	return (unsigned char)(255 * DisplayP3_Gamma_Decode(In) + 0.5);
 }
 
 double RGB2Density(double data)

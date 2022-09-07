@@ -175,8 +175,8 @@ double Density2RGB(double data);
 double RGB2Density255(unsigned char data);
 unsigned char Density2RGB255(double data);
 
-double DisplayP3_Gamma_Encode(double data);
-unsigned char DisplayP3_Gamma_Encode255(unsigned char data);
+double DisplayP3_Gamma_Decode(double data);
+unsigned char DisplayP3_Gamma_Decode255(unsigned char data);
 
 //Other color tools
 int XYZtoCorColorTemp(double *xyz, double *temp);
