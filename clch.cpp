@@ -175,6 +175,7 @@ double inv_DisplayP3_D50[3][3] = {
 /*
 * CLCH color conversion class
 */
+
 CLCH::CLCH(double WhiteX, double WhiteY, double WhiteZ)
 {
 	//SetColorSpace(CS_AdobeRGB);
@@ -284,9 +285,9 @@ void CLCH::XYZ2RGB()
 	G = (X *  m_XYZ2RGB[1][0] + Y * m_XYZ2RGB[1][1] + Z * m_XYZ2RGB[1][2]) * 255;
 	B = (X *  m_XYZ2RGB[2][0] + Y * m_XYZ2RGB[2][1] + Z * m_XYZ2RGB[2][2]) * 255;
 
-	if (R > 255)		R = 255;
-	if (G > 255)		G = 255;
-	if (B > 255)		B = 255;
+	if (R > 255)	R = 255;
+	if (G > 255)	G = 255;
+	if (B > 255)	B = 255;
 
 	if (R < 0)		R = 0;
 	if (G < 0)		G = 0;
@@ -315,6 +316,9 @@ void CLCH::XYZ2LAB()
 	else
 		L = 903.3 * tempY;
 
+	if (L > 100)
+		L = 100;
+
 	if (tempX > 0.008856)
 		fX = pow(tempX, 0.3333333);
 	else
@@ -331,7 +335,12 @@ void CLCH::XYZ2LAB()
 		fZ = 7.787 * tempZ + 0.137931; //0.137931 = 16 / 116;
 
 	a = 500 * (fX - fY);
+	if (a > 127)	a = 127;
+	if (a < -128)	a = -128;
+
 	b = 200 * (fY - fZ);
+	if (b > 127)	b = 127;
+	if (b < -128)	b = -128;
 }
 
 void CLCH::LAB2LCH()
