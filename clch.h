@@ -141,9 +141,9 @@ namespace ColorLch{
 
 		//operation		
 		//D50 Light Xn = 0.9643, Yn = 1.0, Zn = 0.8251
-		CLCH(double WhiteX = 63195.0, double WhiteY = 65535.0, double WhiteZ = 54073.0);
+		//CLCH(double WhiteX = 63195.0, double WhiteY = 65535.0, double WhiteZ = 54073.0);
 		//D50 Light Xn = 0.9643, Yn = 1.0, Zn = 0.8249
-		//CLCH(double WhiteX = 63195.0, double WhiteY = 65535.0, double WhiteZ = 54060.0);
+		CLCH(double WhiteX = 63195.0, double WhiteY = 65535.0, double WhiteZ = 54060.0);
 		~CLCH();
 		void	SetWhite(double WhiteX, double WhiteY, double WhiteZ);
 		void	LCH2LAB();
