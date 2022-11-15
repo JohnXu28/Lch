@@ -142,6 +142,8 @@ namespace ColorLch{
 		//operation		
 		//D50 Light Xn = 0.9643, Yn = 1.0, Zn = 0.8251
 		CLCH(double WhiteX = 63195.0, double WhiteY = 65535.0, double WhiteZ = 54073.0);
+		//D50 Light Xn = 0.9643, Yn = 1.0, Zn = 0.8249
+		//CLCH(double WhiteX = 63195.0, double WhiteY = 65535.0, double WhiteZ = 54060.0);
 		~CLCH();
 		void	SetWhite(double WhiteX, double WhiteY, double WhiteZ);
 		void	LCH2LAB();
@@ -155,7 +157,7 @@ namespace ColorLch{
 		void	Set_Lch(double L, double c, double h);
 		void	Set_Lab(double L, double a, double b);		
 		void	Set_RGB(double R, double G, double B);
-		void	Set_XYZ(double X, double Y, double Z);
+		void	Set_XYZ(double X, double Y, double Z);		
 		CLCH&	operator=(const CLCH& temp);
 	public:
 		// The Light of RGB2XYZ and XYZ2RGB is all D50.
@@ -166,6 +168,7 @@ namespace ColorLch{
 };//ColorLch
 using namespace ColorLch;
 
+void Spec2Lch(CLCH &lch, double* spec);
 double sRGB_Gamma_Decode(double data);
 double sRGB_Gamma_Encode(double data);
 unsigned char sRGB_Gamma_Decode255(unsigned char data);
