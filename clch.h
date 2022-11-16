@@ -168,7 +168,8 @@ namespace ColorLch{
 };//ColorLch
 using namespace ColorLch;
 
-void Spec2Lch(CLCH &lch, double* spec);
+void Spec2Lch_R(CLCH &lch, double* spec);
+void Spec2Lch_E(CLCH& lch, double* spec);
 double sRGB_Gamma_Decode(double data);
 double sRGB_Gamma_Encode(double data);
 unsigned char sRGB_Gamma_Decode255(unsigned char data);
