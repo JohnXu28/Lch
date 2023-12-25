@@ -1,22 +1,20 @@
 include ../Makefile.inc
 
-CPPS = 	clch.cpp 
-		
+CPPS = clch.cpp
+OBJS = clch.o
+all: $(OBJS)
+
 CPPFLAGS += -fPIC 
 
 #================================================================
 .PHONY:release
-release : 
-	${CC} ${CPPFLAGS} -O2 ${CPPS}
+release:
+	${CC} ${CPPFLAGS} ${CPPS}
 	${CP} *.o ../Lib
+	@echo "*****************************Lch:Release************************"
 
-#================================================================
-.PHONY:debug
-debug : 
-	${CC} ${CPPFLAGS} -O0 ${CPPS}
-	${CP} *.o ../Lib
 
 #================================================================
 clean :
 	${RM} *.o
-
+	@echo "*****************************Lch:Clean************************"
