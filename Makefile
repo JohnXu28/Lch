@@ -10,7 +10,7 @@ CPPFLAGS += -fPIC
 .PHONY:test
 %.o : %.cpp
 	${CXX} ${CPPFLAGS} -o $@ $<
-	${CP} *.o ../../Lib
+	${CP} *.o ../Lib
 	@echo "*****************************Lch:test************************"
 
 
