@@ -7,12 +7,10 @@ OBJS=$(CPPS:.cpp=.o)
 
 all: $(OBJS)
 
-CPPFLAGS += -fPIC 
-
 #================================================================
 .PHONY:test
 %.o : %.cpp
-	${CXX} ${CPPFLAGS} -o $@ $<
+	${CXX} ${CPPFLAGS} ${CXXFLAGS} -c -o $@ $<
 	${CP} *.o ../Lib
 	@echo "*****************************Lch:test************************"
 
@@ -20,7 +18,7 @@ CPPFLAGS += -fPIC
 #================================================================
 .PHONY:release
 release:
-	${CXX} ${CPPFLAGS} ${CPPS}
+	${CXX} ${CPPFLAGS} ${CXXFLAGS} -c -o $@ $<
 	${CP} *.o ../Lib
 	@echo "*****************************Lch:Release************************"
 
