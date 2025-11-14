@@ -1,7 +1,10 @@
 include ../Makefile.inc
 
 CPPS = clch.cpp
-OBJS = clch.o
+
+#OBJS : replace *.cpp to *.o
+OBJS=$(CPPS:.cpp=.o)
+
 all: $(OBJS)
 
 CPPFLAGS += -fPIC 
