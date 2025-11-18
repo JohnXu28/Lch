@@ -1,5 +1,6 @@
 include ../Makefile.inc
 
+Module = Lch
 CPPS = clch.cpp
 
 #OBJS : replace *.cpp to *.o
@@ -7,23 +8,30 @@ OBJS=$(CPPS:.cpp=.o)
 
 all: $(OBJS)
 
-#================================================================
-.PHONY:test
-%.o : %.cpp
-	${CXX} ${CPPFLAGS} ${CXXFLAGS} -c -o $@ $<
-	${CP} *.o ../Lib
-	@echo "*****************************Lch:test************************"
+##---------------------------------------------------------
+# Default target
+all: test
 
+#---------------------------------------------------------
+# Test build
+test: CXXFLAGS += 
+test: $(OBJS)
+	@echo "======= $(Module): TEST mode ======="
+	$(CP) *.o ../Lib	
+	
+#---------------------------------------------------------
+# Release build
+release: CXXFLAGS += 
+release: clean $(OBJS)
+	@echo "======= $(Module): RELEASE mode ======="
+	$(CP) *.o ../Lib		
 
-#================================================================
-.PHONY:release
-release:
-	${CXX} ${CPPFLAGS} ${CXXFLAGS} -c -o $@ $<
-	${CP} *.o ../Lib
-	@echo "*****************************Lch:Release************************"
+#---------------------------------------------------------
+# Common compile rule
+%.o : %.cpp	
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-
-#================================================================
-clean :
-	${RM} *.o
-	@echo "*****************************Lch:Clean************************"
+#---------------------------------------------------------
+clean:
+	@echo "Cleaning object files..." $(Module)
+	$(RM) *.o
