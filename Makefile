@@ -18,14 +18,14 @@ all: test
 test: CXXFLAGS += 
 test: $(OBJS)
 	@echo "======= $(Module): TEST mode ======="
-	$(CP) *.o ../Lib	
+	$(CP) *.o $(LIB_DIR)	
 
 #---------------------------------------------------------
 # Release build
 release: CXXFLAGS += 
 release: clean $(OBJS)
 	@echo "======= $(Module): RELEASE mode ======="
-	$(CP) *.o ../Lib
+	$(CP) *.o $(LIB_DIR)
 
 #---------------------------------------------------------
 # Common compile rule
