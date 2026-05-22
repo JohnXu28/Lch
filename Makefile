@@ -1,4 +1,5 @@
 include ../Makefile.inc
+LIB_DIR  := $(CURDIR)/../Lib
 
 Module = Lch
 CPPS = clch.cpp
